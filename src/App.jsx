@@ -1,11 +1,15 @@
 import TopBar from "./component/topbar/TopBar";
+import Home from "./pages/home/Home";
 
 function App() {
-  // const [count, setCount] = useState(0)
+	// const [count, setCount] = useState(0)
 
-  return (
-  <><TopBar/></>
-  )
+	return (
+		<>
+			<TopBar />
+			<Home />
+		</>
+	);
 }
 
-export default App
+export default App;
