@@ -1,11 +1,34 @@
 import React from "react";
 import "./post.css";
+import { Link } from "react-router-dom";
 
-
-export default function Posts() {
-    return (
-        <div className="posts">
-            post
-        </div>
-    )
-}  
+export default function Post({ img }) {
+	return (
+		<div className='post'>
+			<img className='postImg' src={img} alt='' />
+			<div className='postInfo'>
+				<div className='postCats'>
+					<span className='postCat'>Music</span>
+					<span className='postCat'>Life</span>
+					{/* <span className='postCat'>Music</span>
+					<span className='postCat'>Music</span>
+					<span className='postCat'>Music</span>
+					<span className='postCat'>Music</span> */}
+				</div>
+				<span className='postTitle'>Lorem ipsum dolor sit amet</span>
+				<hr />
+				<span className='postDate'>1 hour ago</span>
+			</div>
+			<p className='postDesc'>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus praesentium amet accusamus
+				voluptate vero, molestiae quas recusandae. Dolorum, placeat tenetur rerum eos, ipsa
+				similique ratione neque, quibusdam quas dignissimos ea.Lorem ipsum, dolor sit amet
+				consectetur adipisicing elit. Minus praesentium amet accusamus voluptate vero, molestiae
+				quas recusandae. Dolorum, placeat tenetur rerum eos, ipsa similique ratione neque, quibusdam
+				quas dignissimos ea.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
+				praesentium amet accusamus voluptate vero, molestiae quas recusandae. Dolorum, placeat
+				tenetur rerum eos, ipsa similique ratione neque, quibusdam quas dignissimos ea.
+			</p>
+		</div>
+	);
+}
