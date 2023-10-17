@@ -5,7 +5,7 @@ export default function Sidebar() {
 	return (
 		<div className='sidebar'>
 			<div className='sidebarItem'>
-				<span className='sidebarTitle'>BOUT ME</span>
+				<span className='sidebarTitle'>ABOUT ME</span>
 				<img
 					src='https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg'
 					alt=''
@@ -16,7 +16,7 @@ export default function Sidebar() {
 				</p>
 			</div>
 			<div className='sidebarItem'>
-				<span className='sidebarTitle'>CTEGORIES</span>
+				<span className='sidebarTitle'>CATEGORIES</span>
 				<ul className='sidebarList'>
 					<li className='sidebarListItem'>Life</li>
 					<li className='sidebarListItem'>Music</li>
