@@ -2,7 +2,6 @@
 	padding-top: 50px;
 }
 
-
 .writeImg {
 	margin-left: 150px;
 	width: 70vw;
@@ -10,7 +9,8 @@
 	border-radius: 10px;
 	object-fit: cover;
 }
-.writeFrom {
+
+.writeForm {
 	position: relative;
 }
 
@@ -40,17 +40,25 @@
 	width: 70vw;
 }
 
+.writeInput::placeholder {
+	color: rgb(189, 185, 185);
+	font-weight: 400;
+}
+
 .writeInput:focus {
-	outline: none;
+	outline-style: none;
 }
 
 .writeText {
 	font-size: 20px;
+	width: 70vw;
+	height: 100vh;
+	font-family: inherit;
 }
 
 .writeSubmit {
 	position: absolute;
-	top: 70px;
+	top: 20px;
 	right: 50px;
 	color: white;
 	background-color: teal;
@@ -59,4 +67,6 @@
 	border-radius: 10px;
 	cursor: pointer;
 	font-size: 16px;
+	display: flex;
+	align-items: center;
 }
