@@ -73,7 +73,6 @@ npm run dev
 This command will concurrently start the server and client, and your MERN blog site will be accessible at `http://localhost:5173`.
 
 
-
 ## Author
 
 [Joshua Dei-Alorse]
