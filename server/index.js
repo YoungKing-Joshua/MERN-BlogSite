@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
-
+const userRouter = require("./routes/users");
 
 dotenv.config();
 app.use(express.json());
@@ -16,6 +16,7 @@ async function main ()
 }
 
 app.use("/api/auth", authRouter)
+app.use("/api/users", userRouter)
 
 app.listen("5000", () =>
 {
