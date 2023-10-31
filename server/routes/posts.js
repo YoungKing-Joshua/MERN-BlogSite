@@ -53,38 +53,60 @@ module.exports = router;
 //DELETE POST
 router.delete("/:id", async (req, res) =>
 {
-    if (req.body.userId === req.params.id)
+    try
     {
-        try
+        const post = await Post.findById(req.params.id);
+        if (post.username === req.body.username)
         {
-            const user = await User.findById(req.params.id);
-            const { password, ...others } = user._doc;
             try
             {
-                await Post.deleteMany({ username: user.username });
-                await User.findByIdAndDelete(req.params.id);
-                res.status(200).json("User has been delete");
+                await post.delete();
+                res.status(200).json("Post has been deleted... ");
             } catch (err)
             {
                 res.status(500).json(err);
             }
-        } catch (err) { response.status(404).json("User not found!"); }
-    } else
+        } else { res.status(401).json(" You can delete only your Post"); }
+
+    } catch (err)
     {
-        response.status(401).json("you can delete only your account!");
+        res.status(500).json(err);
     }
 });
 
 
-//GET USER
+
+//GET POST
 router.get("/:id", async (req, res) =>
 {
     try
     {
-        const user = await User.findById(req.params.id);
-        const { password, ...others } = user._doc;
-        res.status(200).json(others);
+        const post = await Post.findById(req.params.id);
+        res.status(200).json(post);
+    } catch (err)
+    {
+        res.status(500).json(err);
+    }
+});
 
+//GET ALL POSTS
+router.get("/", async (req, res) =>
+{
+    const username = req.query.user;
+    const catName = req.query.cat;
+    try
+    {
+        let posts;
+        if (username)
+        {
+            posts = await Post.find({username});
+        } else if(catName){
+            posts = await Post.find({catergories:
+            {$in:[catName]}})
+        } else {
+            posts = Post.find()
+        }
+        res.status(200).json(posts);
     } catch (err)
     {
         res.status(500).json(err);
