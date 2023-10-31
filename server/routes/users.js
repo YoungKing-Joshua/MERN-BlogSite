@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { response } = require("express");
 const Post = require("../models/Post");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
@@ -27,7 +26,7 @@ router.put("/:id", async (req, res) =>
         }
     } else
     {
-        response.status(401).json("you can  update only your account!");
+        response.status(401).json("you can update only your account!");
     }
 });
 

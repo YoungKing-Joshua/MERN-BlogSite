@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 
 
-//
+//CRETE POST
 router.put("/:id", async (req, res) =>
 {
     if (req.body.userId === req.params.id)
