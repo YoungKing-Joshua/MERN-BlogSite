@@ -3,37 +3,54 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 
 
-//CRETE POST
+
+//CREATE POST
+router.post("/register", async (req, res) =>
+{
+    const newPost = new Post(req.body);
+    try
+    {
+        const savedPost = await newPost.save();
+        res.status(200).json(savedPost);
+    } catch (err)
+    {
+        res.status(500).json(err);
+    }
+});
+
+//UPDATE POST
 router.put("/:id", async (req, res) =>
 {
-    if (req.body.userId === req.params.id)
+    try
     {
-        if (req.body.password == req.params.id)
+        const post = await Post.findById(req.params.id);
+        if (post.username === req.body.username)
         {
-            const salt = await (bcrypt.genSalt(10));
-            req.body.password = await bcrypt.hash(req.body.password.salt);
-        }
-        try
-        {
-            const updateUser = await User.findByIdAndUpdate(req.params.id, {
-                $set: req.body,
-            },
-                { new: true });
-            res.status(200).json(updateUser);
-        } catch (err)
-        {
-            res.status(500).json(err);
-        }
-    } else
+            try
+            {
+                const updatePost = await Post.findByIdAndUpdate(
+                    req.params.id,
+                    {
+                        set: req.body,
+                    },
+                    { new: true });
+                res.status(200).json(updatePost);
+            } catch (err)
+            {
+                res.status(500).json(err);
+            }
+        } else { res.status(401).json(" You can update only your Post"); }
+
+    } catch (err)
     {
-        response.status(401).json("you can  update only your account!");
+        res.status(500).json(err);
     }
 });
 
 
 module.exports = router;
 
-//DELETE
+//DELETE POST
 router.delete("/:id", async (req, res) =>
 {
     if (req.body.userId === req.params.id)

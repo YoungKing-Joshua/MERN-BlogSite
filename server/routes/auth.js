@@ -25,7 +25,7 @@ router.post("/register", async (req, res) =>
 });
 
 
-module.exports = router;
+
 
 
 //LOGIN
@@ -49,3 +49,6 @@ router.post("/login", async (req, res) =>
         res.status(500).json(err);
     }
 });
+
+
+module.exports = router;
