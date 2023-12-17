@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Catergories = require("../models/Category");
+const Category = require("../models/Category");
 
 
 router.post("/", async (req, res) =>
@@ -20,7 +20,7 @@ router.get("/", async (req, res) =>
 {
     try
     {
-        const cats = await Catergory.find();
+        const cats = await Category.find();
         res.status(200).json(cats);
     } catch (err)
     {
