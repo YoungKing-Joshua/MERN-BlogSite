@@ -1,8 +1,13 @@
 import "./post.css";
 import { Link } from "react-router-dom";
 
+
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
+
 export default function Post({ post }) {
-  const PF = "http://localhost:5000/images/";
+  const PF = `${port}/images/`;
   return (
     <div className="post">
       {post.photo && <img className="postImg" src={PF + post.photo} alt="" />}

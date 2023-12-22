@@ -4,6 +4,9 @@ import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
 
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
 export default function Settings() {
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
@@ -12,7 +15,7 @@ export default function Settings() {
   const [success, setSuccess] = useState(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const PF = `${port}/images/`
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,11 +33,11 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post(`${port}/api/upload`, data);
       } catch (err) {}
     }
     try {
-      const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser);
+      const res = await axios.put(`${port}/api/users/` + user._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {

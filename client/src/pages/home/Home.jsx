@@ -6,13 +6,19 @@ import "./home.css";
 import axios from "axios";
 import { useLocation } from "react-router";
 
+
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
+
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts" + search);
+      const res = await axios.get(`${port}/api/posts` + search);
       setPosts(res.data);
     };
     fetchPosts();

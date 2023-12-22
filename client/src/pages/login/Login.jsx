@@ -4,6 +4,10 @@ import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./login.css";
 
+
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
@@ -14,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${port}/api/auth/login`, {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });

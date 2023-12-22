@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5000/images/";
+  const PF = `${port}/images/`;
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -17,7 +20,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts/" + path);
+      const res = await axios.get(`${port}/api/posts/` + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -27,7 +30,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
+      await axios.delete(`${port}/api/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -36,7 +39,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/posts/${post._id}`, {
+      await axios.put(`${port}/api/posts/${post._id}`, {
         username: user.username,
         title,
         desc,

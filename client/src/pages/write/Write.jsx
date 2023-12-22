@@ -3,6 +3,9 @@ import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
 
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -23,11 +26,11 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post(`${port}/api/upload`, data);
       } catch (err) {}
     }
     try {
-      const res = await axios.post("http://localhost:5000/api/posts", newPost);
+      const res = await axios.post(`${port}/api/posts`, newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };

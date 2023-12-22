@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 
+
+const port = "https://rose-alert-hippopotamus.cyclic.app";
+const port1 ="http://localhost:5000";
+
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("http://localhost:5000/api/categories");
+      const res = await axios.get(`${port}/api/categories`);
       setCats(res.data);
     };
     getCats();
